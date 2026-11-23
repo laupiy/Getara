@@ -137,7 +137,7 @@ export default function PrototypeIllustration({ active, onActive, components }) 
 
   return (
     <div className="relative" onMouseLeave={() => onActive(null)}>
-      <svg viewBox={`0 0 ${VB.w} ${VB.h}`} className="h-auto w-full select-none" aria-label="Ilustrasi alur kerja prototype VibeGuard">
+      <svg viewBox={`0 0 ${VB.w} ${VB.h}`} className="h-auto w-full select-none" aria-label="Ilustrasi alur kerja prototype Getara">
         <defs>
           <pattern id="hiw-grid" width="24" height="24" patternUnits="userSpaceOnUse">
             <path d="M24 0H0V24" fill="none" stroke={C.edge} strokeOpacity="0.3" strokeWidth="0.6" />
