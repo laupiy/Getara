@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@theme {
+  /* ===== Tema baru: Industrial Slate + Orange (token semantik) =====
+     Pakai nama peran, bukan nama warna, agar palet bisa diganti di satu tempat.
+     Contoh kelas: bg-canvas, bg-surface, border-line, text-ink, text-muted,
+     bg-accent, text-accent, bg-accent/10, ring-accent/40, text-status-normal */
+  --color-canvas: #161c24; /* background utama */
+  --color-canvas-deep: #11161d; /* section selang-seling / footer */
+  --color-surface: #26313d; /* card / panel */
+  --color-surface-raised: #2f3b48; /* hover, input, elemen di atas card */
+  --color-line: #374151; /* border */
+  --color-ink: #f8fafc; /* teks utama */
+  --color-muted: #94a3b8; /* teks sekunder */
+  --color-accent: #f59e0b; /* aksen utama (orange) */
+  --color-accent-hover: #fbbf24;
+  --color-on-accent: #161c24; /* teks di atas tombol orange (putih kontrasnya kurang) */
+
+  /* Warna status semantik — sengaja dibedakan dari aksen orange */
+  --color-status-normal: #22c55e;
+  --color-status-warning: #eab308;
+  --color-status-critical: #ef4444;
+  --color-status-info: #38bdf8;
+
+  /* ===== Tema lama (navy + cyan) — masih dipakai dashboard sampai Tahap 7 ===== */
+  --color-navy-950: #050b18;
+  --color-navy-900: #0a1428;
+  --color-navy-850: #0d1a33;
+  --color-navy-800: #102040;
+  --color-navy-700: #182b52;
+  --color-navy-600: #233a68;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-navy-950 text-slate-200 font-sans antialiased;
+  background-image:
+    radial-gradient(circle at 15% 0%, rgb(34 211 238 / 0.06), transparent 40%),
+    radial-gradient(circle at 100% 100%, rgb(59 130 246 / 0.05), transparent 40%);
+  background-attachment: fixed;
+}
+
+/* Scrollbar tipis */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #233a68 transparent;
+}
+
+/* Grid halus khas panel industrial */
+.panel-grid {
+  background-image:
+    linear-gradient(rgb(148 163 184 / 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(148 163 184 / 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Input tanggal: ikon kalender terlihat di tema gelap */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.8);
+  cursor: pointer;
+}
