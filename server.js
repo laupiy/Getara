@@ -63,7 +63,7 @@ const server = http.createServer(async (req, res) => {
           res.end(JSON.stringify({ error: 'Daftar pesan tidak valid.' }));
           return;
         }
-        const result = await processAIChat(payload.messages, env);
+        const result = await processAIChat(payload.messages, env, payload.machineContext);
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify(result));
       } catch (err) {

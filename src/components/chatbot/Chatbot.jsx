@@ -1,6 +1,10 @@
 import { useState, useRef, useEffect, lazy, Suspense } from 'react';
 import { ChevronDown, Trash2, X, Loader2, Send, AlertTriangle } from 'lucide-react';
 import MarkdownView from './MarkdownView';
+import { useApp } from '../../context/AppContext';
+import { MACHINE_STATUS } from '../../utils/status';
+import { getScenario, getSpeed } from '../../simulation/vibrationSimulator';
+import { fmt } from '../../utils/format';
 
 // Lazy-load maskot 3D agar pustaka Three.js (~600KB) tidak membebani bundle awal
 const YetiMascot = lazy(() => import('./YetiMascot'));
@@ -8,12 +12,12 @@ const YetiMascot = lazy(() => import('./YetiMascot'));
 let lastProvider = 'gemini';
 
 // ---- Pemanggilan AI melalui Backend Proxy (/api/chat) ----
-// Menjaga API Key tetap aman di sisi server dan tidak terekspos ke browser
-async function sendToAI(messages) {
+// Menjaga API Key tetap aman di sisi server dan menyertakan live telemetry mesin
+async function sendToAI(messages, machineContext) {
   const res = await fetch('/api/chat', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ messages }),
+    body: JSON.stringify({ messages, machineContext }),
     signal: AbortSignal.timeout(25000),
   });
 
@@ -119,14 +123,15 @@ function TypingIndicator() {
 }
 
 const QUICK_PROMPTS = [
+  'Bagaimana kondisi mesin saat ini?',
+  'Ada alert apa saja sekarang?',
   'Apa itu RMS Vibration?',
-  'Bagaimana cara baca grafik getaran?',
-  'Status Waspada artinya apa?',
   'Tips predictive maintenance?',
 ];
 
 // ---- Komponen Utama Chatbot ----
 export default function Chatbot() {
+  const app = useApp();
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState([
     {
@@ -142,6 +147,33 @@ export default function Chatbot() {
   const [lastFailedMessages, setLastFailedMessages] = useState(null);
   const bottomRef = useRef(null);
   const inputRef = useRef(null);
+
+  // Mengemas konteks live mesin Getara untuk dikirim ke AI
+  const buildMachineContext = () => {
+    if (!app || !app.telemetry) return null;
+    const { telemetry, scenario, speed, running, baselineRms, alerts, unreadCount, ds18b20Enabled } = app;
+    const { features, score, status, ratio, packet } = telemetry || {};
+    const sp = getSpeed ? getSpeed(speed) : { label: speed, rpm: 1500 };
+    const sc = getScenario ? getScenario(scenario) : { label: scenario };
+    const statusObj = MACHINE_STATUS[status] || { label: status };
+    const firstAlert = alerts && alerts.length > 0 ? alerts[0] : null;
+
+    return {
+      status: statusObj.label,
+      statusRaw: status,
+      rms: features?.rmsTotal ? Number(fmt(features.rmsTotal, 4)) : null,
+      ratio: ratio ? Number(fmt(ratio, 2)) : 1,
+      baselineRms: baselineRms ? Number(fmt(baselineRms, 4)) : null,
+      score: score !== undefined ? Number(fmt(score, 2)) : 0,
+      scenario: sc.label,
+      speed: `${sp.label} (${sp.rpm} RPM)`,
+      temperature: ds18b20Enabled && packet?.temperatureC ? Number(fmt(packet.temperatureC, 1)) : undefined,
+      running,
+      unreadAlerts: unreadCount || 0,
+      totalAlerts: alerts?.length || 0,
+      recentAlert: firstAlert ? `${firstAlert.title || firstAlert.type} (${firstAlert.severity})` : null,
+    };
+  };
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -167,7 +199,8 @@ export default function Chatbot() {
     setError(null);
     setLastFailedMessages(null);
     try {
-      const reply = await sendToAI(newMessages);
+      const machineContext = buildMachineContext();
+      const reply = await sendToAI(newMessages, machineContext);
       setProvider(lastProvider);
       setMessages((prev) => [...prev, { role: 'assistant', content: reply }]);
     } catch (e) {

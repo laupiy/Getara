@@ -1,20 +1,39 @@
 // Handler proxy backend untuk AI Chatbot Getara
 // Menyimpan pemanggilan Gemini & Mistral di server sehingga API key tidak terekspos di browser client.
 
-const SYSTEM_PROMPT = `Kamu adalah asisten AI untuk platform Getara — sistem Machine Health Monitoring berbasis sensor getaran/vibrasi.
+function buildSystemPrompt(machineContext) {
+  let contextSection = '';
+  if (machineContext) {
+    contextSection = `
+DATA MONITORING MESIN REAL-TIME SAAT INI (GETARA TELEMETRY):
+- Status Kesehatan Mesin: ${machineContext.status || 'Normal'}
+- Nilai Getaran RMS: ${machineContext.rms ? `${machineContext.rms} g` : 'Tidak tersedia'} (Rasio terhadap baseline: ${machineContext.ratio ? `${machineContext.ratio}x` : '1x'})
+- Baseline RMS Normal: ${machineContext.baselineRms ? `${machineContext.baselineRms} g` : 'Tidak tersedia'}
+- Skor Anomali (Heuristik): ${machineContext.score !== undefined ? machineContext.score : 'Tidak tersedia'} (Ambang Waspada: 0.35, Anomali: 0.60)
+- Kondisi / Skenario Mesin: ${machineContext.scenario || 'Normal'}
+- Kecepatan Motor: ${machineContext.speed || 'Sedang'}
+- Suhu Motor: ${machineContext.temperature !== undefined ? `${machineContext.temperature} °C` : 'Sensor Nonaktif'}
+- Status Monitoring: ${machineContext.running ? 'Sedang Berjalan (Streaming Data)' : 'Dijeda (Paused)'}
+- Peringatan (Alerts): ${machineContext.unreadAlerts || 0} alert belum dibaca dari total ${machineContext.totalAlerts || 0} alert.
+${machineContext.recentAlert ? `- Alert Terbaru: ${machineContext.recentAlert}` : ''}
 
-Tugasmu membantu pengguna memahami:
-- Data monitoring mesin (vibrasi, getaran, frekuensi, amplitudo)
-- Status kesehatan mesin dan artinya (Normal, Waspada, Anomali)
-- Alert/peringatan yang muncul di dashboard
-- Analisis tren dan anomali data sensor
-- Rekomendasi perawatan preventif (predictive maintenance)
-- Cara membaca dan menginterpretasi grafik getaran
-- Istilah teknis seputar kondisi monitoring mesin
+(Catatan: Gunakan data real-time di atas jika pengguna menanyakan kondisi mesin saat ini, nilai getaran, suhu, alert yang sedang aktif, atau kesehatan motor!)
+`;
+  }
 
-Gunakan bahasa Indonesia yang mudah dipahami, namun profesional.
-Jawaban harus ringkas, informatif, dan relevan dengan konteks monitoring mesin.
-Jika ditanya di luar topik tersebut, arahkan kembali ke topik Getara.`;
+  return `Kamu adalah asisten AI resmi untuk platform Getara — sistem Machine Health Monitoring berbasis sensor getaran/vibrasi (ADXL345, ESP32, Motor DC 12V).
+${contextSection}
+ATURAN & BATASAN KETAT (GUARDRAILS):
+1. FOKUS TOPIK: Kamu HANYA boleh menjawab pertanyaan seputar platform Getara, monitoring getaran mesin (RMS, crest factor, FFT), sensor (ADXL345, DS18B20, ESP32), status kesehatan mesin (Normal, Waspada, Anomali), deteksi anomali, sistem peringatan (alerts), dan predictive maintenance mesin.
+2. BATASAN DI LUAR TOPIK:
+   - Jika ditanya hal pribadi (seperti "kamu umur berapa", "siapa pacarmu", "kamu tinggal di mana", "jenis kelaminmu apa", dll.),
+   - Jika ditanya topik umum di luar Getara (politik, selebriti, resep makanan, film, matematika umum, ramalan, coding umum non-Getara, dll.):
+   TOLAK DENGAN RAMAH DAN SOPAN dalam 1-2 kalimat, dan kembalikan fokus ke pemantauan mesin Getara.
+   Contoh respon: "Maaf, saya adalah asisten khusus Getara. Saya hanya dapat membantu menjawab seputar monitoring kesehatan mesin, data getaran, dan peringatan sistem."
+   JANGAN PERNAH mengarang jawaban pribadi seperti menyebut umur manusia atau meladeni obrolan di luar monitoring mesin.
+3. IDENTITAS DIRI: Kamu adalah "Asisten AI Getara" dengan maskot Yeti cerdas, yang bertugas membantu teknisi dan operator memahami data getaran dan kondisi mesin.
+4. GAYA PENYAMPAIAN: Gunakan bahasa Indonesia yang profesional, ringkas, jelas, dan ramah. Gunakan format markdown (tebal, butir poin) agar data mudah dibaca oleh pengguna.`;
+}
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -29,7 +48,7 @@ async function withRetry(fn, args, retries = 1) {
   }
 }
 
-async function callGemini(messages, apiKey) {
+async function callGemini(messages, apiKey, systemPrompt) {
   if (!apiKey) {
     const err = new Error('Kunci GEMINI_API_KEY tidak ditemukan.');
     err.code = 'API_KEY_MISSING';
@@ -52,7 +71,7 @@ async function callGemini(messages, apiKey) {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
+            systemInstruction: { parts: [{ text: systemPrompt }] },
             contents,
             generationConfig: { temperature: 0.7, maxOutputTokens: 1024 },
           }),
@@ -87,7 +106,7 @@ async function callGemini(messages, apiKey) {
   throw e;
 }
 
-async function callMistral(messages, apiKey) {
+async function callMistral(messages, apiKey, systemPrompt) {
   if (!apiKey) {
     const err = new Error('Kunci MISTRAL_API_KEY tidak ditemukan.');
     err.code = 'API_KEY_MISSING';
@@ -104,7 +123,7 @@ async function callMistral(messages, apiKey) {
     body: JSON.stringify({
       model: 'mistral-small-latest',
       messages: [
-        { role: 'system', content: SYSTEM_PROMPT },
+        { role: 'system', content: systemPrompt },
         ...messages
           .filter((m) => m.role !== 'system')
           .map((m) => ({ role: m.role, content: m.content })),
@@ -129,7 +148,7 @@ async function callMistral(messages, apiKey) {
   return { reply: reply || '(Tidak ada respons dari Mistral)', provider: 'mistral' };
 }
 
-export async function processAIChat(messages, env = {}) {
+export async function processAIChat(messages, env = {}, machineContext = null) {
   const geminiKey = env.GEMINI_API_KEY || env.VITE_GEMINI_API_KEY || '';
   const mistralKey = env.MISTRAL_API_KEY || env.VITE_MISTRAL_API_KEY || '';
 
@@ -142,9 +161,11 @@ export async function processAIChat(messages, env = {}) {
     throw err;
   }
 
+  const systemPrompt = buildSystemPrompt(machineContext);
+
   const callers = [];
-  if (geminiKey) callers.push(withRetry(callGemini, [messages, geminiKey]));
-  if (mistralKey) callers.push(withRetry(callMistral, [messages, mistralKey]));
+  if (geminiKey) callers.push(withRetry(callGemini, [messages, geminiKey, systemPrompt]));
+  if (mistralKey) callers.push(withRetry(callMistral, [messages, mistralKey, systemPrompt]));
 
   try {
     return await Promise.any(callers);
