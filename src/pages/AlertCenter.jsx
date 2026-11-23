@@ -42,7 +42,7 @@ export default function AlertCenter() {
   return (
     <>
       <PageHeader
-        title="Alert Center"
+        title="Pusat Peringatan"
         description="Peringatan yang dibangkitkan dari simulasi. Klik baris untuk melihat detail dan mengubah status."
         actions={
           <>
@@ -57,10 +57,10 @@ export default function AlertCenter() {
       />
 
       <div className="mb-6 grid grid-cols-2 gap-4 xl:grid-cols-4">
-        <StatCard label="Total alert" value={alerts.length} icon={Bell} tone="accent" />
+        <StatCard label="Total peringatan" value={alerts.length} icon={Bell} tone="accent" />
         <StatCard label="Belum dibaca" value={unreadCount} icon={BellOff} tone="violet" />
-        <StatCard label="Status open" value={openCount} icon={AlertTriangle} tone="red" />
-        <StatCard label="High / Critical" value={highCount} icon={AlertTriangle} tone="amber" />
+        <StatCard label="Status terbuka" value={openCount} icon={AlertTriangle} tone="red" />
+        <StatCard label="Tinggi / Kritis" value={highCount} icon={AlertTriangle} tone="amber" />
       </div>
 
       <Card
@@ -72,7 +72,7 @@ export default function AlertCenter() {
       >
         <div className="flex flex-wrap items-end gap-3 border-b border-line/60 px-5 py-4">
           <Select
-            label="Severity"
+            label="Tingkat"
             value={severity}
             onChange={setSeverity}
             options={[{ value: ALL, label: 'Semua' }, ...Object.entries(SEVERITY).map(([v, s]) => ({ value: v, label: s.label }))]}
@@ -113,7 +113,7 @@ export default function AlertCenter() {
                 <th className="px-3 py-3 font-medium">Waktu</th>
                 <th className="px-3 py-3 font-medium">Peringatan</th>
                 <th className="px-3 py-3 font-medium">Jenis anomali</th>
-                <th className="px-3 py-3 font-medium">Severity</th>
+                <th className="px-3 py-3 font-medium">Tingkat</th>
                 <th className="px-3 py-3 font-medium">Status</th>
                 <th className="px-5 py-3 text-right font-medium">Aksi</th>
               </tr>

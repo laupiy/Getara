@@ -153,7 +153,7 @@ export const MOCK_DEVICES = [
       ['I2C default', 'SDA GPIO21, SCL GPIO22'],
       ['Device ID (rencana)', 'esp32-vg-01'],
     ],
-    notes: 'Firmware MQTT belum dibuat. Status "Simulated" berarti data berasal dari simulator di browser.',
+    notes: 'Firmware MQTT belum dibuat. Status "Simulasi" berarti data berasal dari simulator di browser.',
   },
   {
     id: 'adxl345',

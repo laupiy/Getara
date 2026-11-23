@@ -115,7 +115,7 @@ export default function History() {
   return (
     <>
       <PageHeader
-        title="History"
+        title="Riwayat"
         description="Riwayat sesi pengujian simulasi. Struktur datanya disiapkan untuk sesi perekaman dataset asli."
         actions={
           <Button variant="primary" icon={Download} onClick={() => downloadCsv(filtered)} disabled={!filtered.length}>
@@ -171,7 +171,7 @@ export default function History() {
         </div>
       </Card>
 
-      <Card title="Riwayat Pengujian" subtitle={`${filtered.length} sesi`} icon={Database} actions={<SimTag />} bodyClassName="p-0">
+      <Card title="Riwayat Pengujian" subtitle={`${filtered.length} sesi`} icon={Database} bodyClassName="p-0">
         <div className="overflow-x-auto">
           <table className="w-full min-w-[860px] text-sm">
             <thead>

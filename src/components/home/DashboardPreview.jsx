@@ -52,7 +52,7 @@ export default function DashboardPreview({ onOpen }) {
     <button
       type="button"
       onClick={onOpen}
-      aria-label="Buka dashboard Overview"
+      aria-label="Buka dashboard Ringkasan"
       className="group block w-full overflow-hidden rounded-xl border border-line bg-canvas text-left shadow-2xl shadow-black/40 transition-colors hover:border-accent/50"
     >
       {/* Bingkai browser */}
@@ -87,7 +87,7 @@ export default function DashboardPreview({ onOpen }) {
           <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
             <Tile label="Status" value={MACHINE_STATUS[status]?.label ?? '—'} valueClass={STATUS_TEXT[status]} />
             <Tile label="RMS" value={fmt(features?.rmsTotal, 3)} unit="g" />
-            <Tile label="Suhu" value={ds18b20Enabled ? fmt(packet?.temperatureC, 1) : 'Off'} unit={ds18b20Enabled ? '°C' : ''} />
+            <Tile label="Suhu" value={ds18b20Enabled ? fmt(packet?.temperatureC, 1) : 'Nonaktif'} unit={ds18b20Enabled ? '°C' : ''} />
             <Tile label="Skor" value={fmt(score, 2)} />
           </div>
 

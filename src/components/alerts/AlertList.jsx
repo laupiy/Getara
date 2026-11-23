@@ -3,7 +3,7 @@ import { StatusBadge } from '../ui/Badge';
 import { ALERT_STATUS, SEVERITY } from '../../utils/status';
 import { formatDateTime, relativeTime } from '../../utils/format';
 
-const ICON_COLOR = { low: 'text-slate-400', medium: 'text-yellow-300', high: 'text-orange-300', critical: 'text-rose-300' };
+const ICON_COLOR = { low: 'text-slate-400', medium: 'text-status-warning', high: 'text-status-high', critical: 'text-status-critical' };
 
 /** Daftar alert yang bisa diklik. Dipakai di Overview & Alert Center. */
 export default function AlertList({ alerts, onOpen, showStatus = true, emptyText = 'Belum ada alert.' }) {

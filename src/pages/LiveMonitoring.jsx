@@ -17,16 +17,16 @@ export default function LiveMonitoring() {
   const { xyz, trend, features, packet, score, status, packetsReceived } = telemetry;
 
   const connections = [
-    { name: 'ESP32 (esp32-vg-01)', icon: Cpu, state: running ? 'Simulated' : 'Paused', tone: running ? 'accent' : 'amber' },
-    { name: 'ADXL345 via I2C', icon: Activity, state: running ? 'Simulated' : 'Paused', tone: running ? 'accent' : 'amber' },
-    { name: 'MQTT Broker', icon: Radio, state: 'Not Integrated', tone: 'slate' },
-    { name: 'Wi-Fi', icon: WifiOff, state: 'Not Integrated', tone: 'slate' },
+    { name: 'ESP32 (esp32-vg-01)', icon: Cpu, state: running ? 'Simulasi' : 'Dijeda', tone: running ? 'accent' : 'amber' },
+    { name: 'ADXL345 via I2C', icon: Activity, state: running ? 'Simulasi' : 'Dijeda', tone: running ? 'accent' : 'amber' },
+    { name: 'MQTT Broker', icon: Radio, state: 'Belum Terintegrasi', tone: 'slate' },
+    { name: 'Wi-Fi', icon: WifiOff, state: 'Belum Terintegrasi', tone: 'slate' },
   ];
 
   return (
     <>
       <PageHeader
-        title="Live Monitoring"
+        title="Pantauan Langsung"
         description="Sinyal getaran 3 sumbu dari simulator. Ubah skenario untuk melihat perbedaan pola."
         actions={<StatusBadge map={MACHINE_STATUS} value={status} pulse={running} />}
       />
@@ -57,7 +57,7 @@ export default function LiveMonitoring() {
             />
           </Card>
 
-          <Card title="RMS per Sumbu" subtitle="30 detik terakhir (komponen AC, gravitasi dibuang)" icon={Activity} actions={<SimTag />}>
+          <Card title="RMS per Sumbu" subtitle="30 detik terakhir (komponen AC, gravitasi dibuang)" icon={Activity}>
             <TimeSeriesChart
               data={trend}
               height={260}
@@ -121,7 +121,7 @@ export default function LiveMonitoring() {
               ))}
             </ul>
             <p className="mt-4 text-xs text-slate-500">
-              "Simulated" = data dibangkitkan di browser. Koneksi MQTT akan ditambahkan pada tahap integrasi hardware.
+              "Simulasi" = data dibangkitkan di browser. Koneksi MQTT akan ditambahkan pada tahap integrasi hardware.
             </p>
           </Card>
         </div>

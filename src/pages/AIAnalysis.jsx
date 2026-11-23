@@ -113,22 +113,22 @@ function ModelDetail({ model }) {
         </ol>
         <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div>
-            <p className="mb-1.5 text-xs font-semibold text-emerald-300">Potensi kelebihan</p>
+            <p className="mb-1.5 text-xs font-semibold text-status-normal">Potensi kelebihan</p>
             <ul className="space-y-1">
               {model.strengths.map((s) => (
                 <li key={s} className="flex gap-2 text-xs text-slate-400">
-                  <CheckCircle size={13} className="mt-0.5 shrink-0 text-emerald-400/70" />
+                  <CheckCircle size={13} className="mt-0.5 shrink-0 text-status-normal/70" />
                   {s}
                 </li>
               ))}
             </ul>
           </div>
           <div>
-            <p className="mb-1.5 text-xs font-semibold text-yellow-300">Risiko / keterbatasan</p>
+            <p className="mb-1.5 text-xs font-semibold text-status-warning">Risiko / keterbatasan</p>
             <ul className="space-y-1">
               {model.risks.map((s) => (
                 <li key={s} className="flex gap-2 text-xs text-slate-400">
-                  <AlertTriangle size={13} className="mt-0.5 shrink-0 text-yellow-400/70" />
+                  <AlertTriangle size={13} className="mt-0.5 shrink-0 text-status-warning/70" />
                   {s}
                 </li>
               ))}
@@ -163,16 +163,16 @@ export default function AIAnalysis() {
   return (
     <>
       <PageHeader
-        title="AI Analysis"
+        title="Analisis AI"
         description="Rancangan perbandingan tiga pendekatan deteksi anomali. Belum ada model yang dilatih atau diuji."
       />
 
-      <div className="mb-6 flex items-start gap-3 rounded-xl border border-yellow-400/30 bg-yellow-500/5 p-4">
-        <AlertTriangle size={18} className="mt-0.5 shrink-0 text-yellow-300" />
-        <div className="text-sm text-yellow-100/90">
+      <div className="mb-6 flex items-start gap-3 rounded-xl bg-status-warning/10 p-4">
+        <AlertTriangle size={18} className="mt-0.5 shrink-0 text-status-warning" />
+        <div className="text-sm text-slate-200">
           <p className="font-semibold">Status: rancangan, belum ada hasil eksperimen.</p>
-          <p className="mt-1 text-yellow-100/70">
-            Semua metrik ditandai <span className="font-mono">Not Tested</span>. Angka akan muncul otomatis setelah hasil
+          <p className="mt-1 text-slate-400">
+            Semua metrik ditandai <span className="font-mono">Belum Diuji</span>. Angka akan muncul otomatis setelah hasil
             evaluasi asli tersedia melalui lapisan data (<span className="font-mono">fetchEvaluationResults</span>).
           </p>
         </div>

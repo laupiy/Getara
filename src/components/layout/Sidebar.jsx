@@ -1,4 +1,4 @@
-import { Activity, X } from 'lucide-react';
+import { Activity, ArrowLeft, X } from 'lucide-react';
 import { NAV_ITEMS } from '../../config/navigation';
 import { useApp } from '../../context/AppContext';
 
@@ -22,7 +22,7 @@ export default function Sidebar({ current, onNavigate, open, onClose }) {
               onNavigate('home');
               onClose();
             }}
-            title="Kembali ke Homepage"
+            title="Kembali ke Beranda"
             className="flex items-center gap-3 text-left"
           >
             <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-on-accent shadow-lg shadow-accent/20">
@@ -59,15 +59,29 @@ export default function Sidebar({ current, onNavigate, open, onClose }) {
                 <Icon size={18} className={active ? 'text-accent' : 'text-slate-500 group-hover:text-slate-300'} />
                 <span className="flex-1 text-left">{item.label}</span>
                 {item.id === 'alerts' && unreadCount > 0 && (
-                  <span className="rounded-full bg-rose-500/20 px-1.5 py-px font-mono text-[11px] text-rose-300">{unreadCount}</span>
+                  <span className="rounded-full bg-status-critical/15 px-1.5 py-px font-mono text-[11px] text-status-critical">{unreadCount}</span>
                 )}
               </button>
             );
           })}
         </nav>
 
+        <div className="px-3 pb-1">
+          <button
+            type="button"
+            onClick={() => {
+              onNavigate('home');
+              onClose();
+            }}
+            className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-400 transition-colors hover:bg-surface-raised hover:text-slate-100"
+          >
+            <ArrowLeft size={18} className="text-slate-500" />
+            Kembali ke Beranda
+          </button>
+        </div>
+
         <div className="m-3 rounded-lg border border-dashed border-accent/30 bg-accent/5 px-3 py-3 text-xs">
-          <p className="font-semibold text-accent">Prototype v0.1</p>
+          <p className="font-semibold text-accent">Purwarupa v0.1</p>
           <p className="mt-1 text-slate-400">
             Mode data: <span className="font-mono text-accent">{dataMode}</span>. Hardware & model AI belum terintegrasi.
           </p>

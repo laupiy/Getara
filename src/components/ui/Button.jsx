@@ -1,12 +1,12 @@
 const VARIANTS = {
-  primary: 'bg-accent text-on-accent hover:bg-accent-hover shadow shadow-accent/20',
-  secondary: 'bg-surface-raised text-slate-200 ring-1 ring-inset ring-line hover:bg-line',
+  primary: 'bg-accent text-on-accent hover:bg-accent-hover',
+  secondary: 'bg-surface-raised text-slate-200 hover:bg-line',
   ghost: 'text-slate-300 hover:bg-surface-raised hover:text-slate-100',
-  danger: 'bg-rose-500/10 text-rose-300 ring-1 ring-inset ring-rose-400/30 hover:bg-rose-500/20',
-  success: 'bg-emerald-500/10 text-emerald-300 ring-1 ring-inset ring-emerald-400/30 hover:bg-emerald-500/20',
+  danger: 'bg-status-critical/10 text-status-critical hover:bg-status-critical/20',
+  success: 'bg-status-normal/10 text-status-normal hover:bg-status-normal/20',
   // Tema baru (Industrial Slate + Orange)
-  accent: 'bg-accent text-on-accent hover:bg-accent-hover shadow shadow-accent/20',
-  outline: 'text-ink ring-1 ring-inset ring-line hover:bg-surface',
+  accent: 'bg-accent text-on-accent hover:bg-accent-hover',
+  outline: 'text-ink bg-surface/60 hover:bg-surface-raised',
 };
 
 const SIZES = {

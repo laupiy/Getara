@@ -30,8 +30,8 @@ function DeviceCard({ device, connection, checking, result, onTest, extraAction 
       <p className="mt-3 text-xs text-slate-500">{device.notes}</p>
 
       {result && (
-        <div className="mt-3 rounded-lg border border-yellow-400/30 bg-yellow-500/5 p-3 text-xs text-yellow-100/80">
-          <span className="font-mono text-yellow-300">[{formatTime(result.checkedAt)}]</span> {result.message}
+        <div className="mt-3 rounded-lg bg-status-warning/10 p-3 text-xs text-slate-300">
+          <span className="font-mono text-status-warning">[{formatTime(result.checkedAt)}]</span> {result.message}
         </div>
       )}
 
@@ -65,7 +65,7 @@ export default function DeviceManagement() {
   return (
     <>
       <PageHeader
-        title="Device Management"
+        title="Manajemen Perangkat"
         description="Daftar perangkat prototype dan spesifikasinya. Status koneksi masih berasal dari simulator."
       />
 

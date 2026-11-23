@@ -20,7 +20,7 @@ export default function HeroSection({ onExplore, onLearnMore }) {
 
           <div className="mt-8 flex flex-wrap gap-3">
             <Button variant="accent" icon={ArrowRight} onClick={onExplore} className="h-11 px-5">
-              Explore Dashboard
+              Buka Dashboard
             </Button>
             <Button variant="outline" icon={ChevronDown} onClick={onLearnMore} className="h-11 px-5">
               Learn More

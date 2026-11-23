@@ -4,13 +4,13 @@ const ACCENT = {
   green: 'text-status-normal bg-status-normal/10',
   amber: 'text-status-warning bg-status-warning/10',
   red: 'text-status-critical bg-status-critical/10',
-  violet: 'text-violet-300 bg-violet-500/10',
+  violet: 'text-status-violet bg-status-violet/10',
   slate: 'text-slate-300 bg-slate-500/10',
 };
 
 export default function StatCard({ label, value, unit, icon: Icon, tone = 'accent', hint, badge, footer }) {
   return (
-    <div className="relative overflow-hidden rounded-xl border border-line/70 bg-surface/70 p-4 shadow-lg shadow-black/20">
+    <div className="relative overflow-hidden rounded-xl bg-surface/60 p-4 ring-1 ring-inset ring-line/40">
       <div className="pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full bg-accent/5 blur-2xl" />
       <div className="flex items-start justify-between gap-2">
         <p className="text-xs font-medium uppercase tracking-wider text-slate-400">{label}</p>

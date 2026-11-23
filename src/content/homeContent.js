@@ -3,10 +3,10 @@ import { Activity, AlertTriangle, Brain, Cpu, Gauge, Radio, Target, Wrench } fro
 
 // Link navbar homepage (scroll ke section). Ditambah seiring section baru dibuat.
 export const HOME_NAV = [
-  { id: 'about', label: 'About' },
-  { id: 'how-it-works', label: 'How It Works' },
-  { id: 'technology', label: 'Technology' },
-  { id: 'explore', label: 'Explore' },
+  { id: 'about', label: 'Tentang' },
+  { id: 'how-it-works', label: 'Cara Kerja' },
+  { id: 'technology', label: 'Teknologi' },
+  { id: 'explore', label: 'Jelajahi' },
 ];
 
 export const HERO = {
@@ -23,7 +23,7 @@ export const HERO = {
 };
 
 export const ABOUT = {
-  eyebrow: 'About Getara',
+  eyebrow: 'Tentang Getara',
   title: 'Membaca kondisi mesin dari getarannya',
   description:
     'Perubahan pola getaran sering menjadi tanda awal adanya masalah pada mesin. Getara mengeksplorasi cara memantau pola tersebut secara otomatis, sehingga perubahan kondisi bisa dikenali lebih awal.',
@@ -60,7 +60,7 @@ export const ABOUT = {
 
 // Komponen pada ilustrasi How It Works. `status` dibuat jujur sesuai kondisi project saat ini.
 export const HOW_IT_WORKS = {
-  eyebrow: 'How It Works',
+  eyebrow: 'Cara Kerja',
   title: 'Dari getaran motor hingga dashboard',
   description:
     'Arahkan kursor atau klik komponen untuk melihat perannya. Ilustrasi ini menggambarkan arsitektur prototype yang direncanakan.',
@@ -111,7 +111,7 @@ export const HOW_IT_WORKS = {
 };
 
 export const TECHNOLOGY = {
-  eyebrow: 'Technology',
+  eyebrow: 'Teknologi',
   title: 'Tiga lapisan teknologi',
   description:
     'Getara menggabungkan perangkat IoT untuk membaca getaran, pemrosesan sinyal untuk mengubahnya menjadi fitur, dan AI untuk mengenali pola yang tidak biasa.',
@@ -152,7 +152,7 @@ export const TECHNOLOGY = {
 };
 
 export const EXPLORE = {
-  eyebrow: 'Explore Prototype',
+  eyebrow: 'Jelajahi Prototype',
   title: 'Coba dashboard monitoring',
   description:
     'Dashboard sudah bisa dicoba dengan data simulasi: ubah skenario motor, amati grafik getaran, dan lihat bagaimana alert muncul.',

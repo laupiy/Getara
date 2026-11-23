@@ -38,7 +38,7 @@ export default function ExploreSection({ onNavigate }) {
           </ul>
 
           <Button variant="accent" icon={ArrowRight} onClick={openOverview} className="mt-5 h-11 w-full px-5">
-            Buka Overview
+            Buka Ringkasan
           </Button>
         </div>
       </div>

@@ -47,7 +47,7 @@ export default function Home({ onNavigate }) {
               ))}
             </nav>
             <Button variant="accent" icon={LayoutDashboard} onClick={openDashboard}>
-              <span className="hidden sm:inline">Explore Dashboard</span>
+              <span className="hidden sm:inline">Buka Dashboard</span>
               <span className="sm:hidden">Dashboard</span>
             </Button>
           </div>

@@ -16,11 +16,13 @@
   --color-accent-hover: #fbbf24;
   --color-on-accent: #161c24; /* teks di atas tombol orange (putih kontrasnya kurang) */
 
-  /* Warna status semantik — sengaja dibedakan dari aksen orange */
-  --color-status-normal: #22c55e;
-  --color-status-warning: #eab308;
-  --color-status-critical: #ef4444;
-  --color-status-info: #38bdf8;
+  /* Warna status semantik — dibuat lembut (desaturasi) agar nyaman di mata */
+  --color-status-normal: #6fb99a;
+  --color-status-warning: #d4b36a;
+  --color-status-high: #d39066;
+  --color-status-critical: #d9807f;
+  --color-status-info: #7fb4d4;
+  --color-status-violet: #a99bd6;
 
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;

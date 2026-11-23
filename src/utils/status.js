@@ -1,37 +1,37 @@
 // Pemetaan status -> label & warna badge (satu sumber untuk seluruh UI)
 
 export const MACHINE_STATUS = {
-  idle: { label: 'Idle', tone: 'slate' },
+  idle: { label: 'Menunggu', tone: 'slate' },
   normal: { label: 'Normal', tone: 'green' },
-  warning: { label: 'Warning', tone: 'amber' },
-  anomaly: { label: 'Anomaly', tone: 'red' },
+  warning: { label: 'Waspada', tone: 'amber' },
+  anomaly: { label: 'Anomali', tone: 'red' },
 };
 
 export const SEVERITY = {
-  low: { label: 'Low', tone: 'slate', rank: 1 },
-  medium: { label: 'Medium', tone: 'amber', rank: 2 },
-  high: { label: 'High', tone: 'orange', rank: 3 },
-  critical: { label: 'Critical', tone: 'red', rank: 4 },
+  low: { label: 'Rendah', tone: 'slate', rank: 1 },
+  medium: { label: 'Sedang', tone: 'amber', rank: 2 },
+  high: { label: 'Tinggi', tone: 'orange', rank: 3 },
+  critical: { label: 'Kritis', tone: 'red', rank: 4 },
 };
 
 export const ALERT_STATUS = {
-  open: { label: 'Open', tone: 'red' },
-  acknowledged: { label: 'Acknowledged', tone: 'amber' },
-  resolved: { label: 'Resolved', tone: 'green' },
+  open: { label: 'Terbuka', tone: 'red' },
+  acknowledged: { label: 'Diakui', tone: 'amber' },
+  resolved: { label: 'Selesai', tone: 'green' },
 };
 
 export const CONDITION = {
   normal: { label: 'Normal', tone: 'green' },
   unbalance: { label: 'Unbalance', tone: 'orange' },
-  loose: { label: 'Loose Mounting', tone: 'violet' },
+  loose: { label: 'Dudukan Longgar', tone: 'violet' },
 };
 
 export const CONNECTION = {
-  simulated: { label: 'Simulated', tone: 'accent' },
-  connected: { label: 'Connected', tone: 'green' },
-  disconnected: { label: 'Not Connected', tone: 'slate' },
-  disabled: { label: 'Disabled', tone: 'slate' },
-  paused: { label: 'Paused', tone: 'amber' },
+  simulated: { label: 'Simulasi', tone: 'accent' },
+  connected: { label: 'Terhubung', tone: 'green' },
+  disconnected: { label: 'Tidak Terhubung', tone: 'slate' },
+  disabled: { label: 'Nonaktif', tone: 'slate' },
+  paused: { label: 'Dijeda', tone: 'amber' },
 };
 
 // Ambang status dari skor anomali (0–1)

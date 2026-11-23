@@ -38,44 +38,42 @@ export default function Overview({ onNavigate }) {
   return (
     <>
       <PageHeader
-        title="Overview"
+        title="Ringkasan"
         description="Ringkasan kondisi motor DC 12V berdasarkan data getaran simulasi."
         actions={
           <Button variant="primary" icon={Activity} onClick={() => onNavigate('live')}>
-            Buka Live Monitoring
+            Buka Pantauan Langsung
           </Button>
         }
       />
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <StatCard
-          label="Machine Status"
+          label="Status Mesin"
           value={MACHINE_STATUS[status]?.label ?? '—'}
           icon={ShieldCheck}
           tone={statusTone === 'slate' ? 'slate' : statusTone}
           badge={<StatusBadge map={MACHINE_STATUS} value={status} pulse={running && status !== 'normal'} />}
-          hint={running ? 'Streaming' : 'Paused'}
+          hint={running ? 'Berjalan' : 'Dijeda'}
         />
         <StatCard
-          label="Vibration RMS"
+          label="RMS Getaran"
           value={fmt(features?.rmsTotal, 3)}
           unit="g"
           icon={TrendingUp}
           tone="accent"
-          badge={<SimTag />}
           hint={`${fmt(ratio, 2)}× baseline`}
         />
         <StatCard
-          label="Motor Temperature"
-          value={ds18b20Enabled ? fmt(packet?.temperatureC, 1) : 'Off'}
+          label="Suhu Motor"
+          value={ds18b20Enabled ? fmt(packet?.temperatureC, 1) : 'Nonaktif'}
           unit={ds18b20Enabled ? '°C' : ''}
           icon={Thermometer}
           tone="amber"
-          badge={<SimTag />}
           hint={ds18b20Enabled ? 'DS18B20 (opsional)' : 'Sensor dinonaktifkan'}
         />
         <StatCard
-          label="Anomaly Score"
+          label="Skor Anomali"
           value={fmt(score, 2)}
           icon={Gauge}
           tone="violet"
@@ -90,7 +88,6 @@ export default function Overview({ onNavigate }) {
           title="Tren Getaran (RMS)"
           subtitle="30 detik terakhir · garis putus-putus = baseline normal"
           icon={TrendingUp}
-          actions={<SimTag />}
         >
           <TimeSeriesChart
             data={trend}
@@ -105,12 +102,12 @@ export default function Overview({ onNavigate }) {
         </Card>
 
         <Card title="Ringkasan Kondisi Mesin" icon={ShieldCheck}>
-          <div className={`mb-4 rounded-lg border p-3 text-sm ${
+          <div className={`mb-4 rounded-lg p-3 text-sm ${
             status === 'anomaly'
-              ? 'border-rose-400/30 bg-rose-500/5 text-rose-200'
+              ? 'bg-status-critical/10 text-status-critical'
               : status === 'warning'
-                ? 'border-yellow-400/30 bg-yellow-500/5 text-yellow-200'
-                : 'border-emerald-400/20 bg-emerald-500/5 text-emerald-200'
+                ? 'bg-status-warning/10 text-status-warning'
+                : 'bg-status-normal/10 text-status-normal'
           }`}>
             {STATUS_TEXT[status]}
           </div>
@@ -129,7 +126,7 @@ export default function Overview({ onNavigate }) {
 
       <Card
         className="mt-6"
-        title="Recent Alerts"
+        title="Peringatan Terbaru"
         subtitle="5 peringatan terbaru"
         icon={Bell}
         actions={

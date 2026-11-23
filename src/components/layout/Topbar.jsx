@@ -29,32 +29,32 @@ export default function Topbar({ title, description, onMenu, onNavigate }) {
       </div>
 
       <Badge tone="accent" dot pulse={running} className="hidden sm:inline-flex">
-        SIMULATION MODE
+        MODE SIMULASI
       </Badge>
 
       <button
         type="button"
         onClick={toggleRunning}
         title={running ? 'Jeda simulasi' : 'Jalankan simulasi'}
-        className={`flex h-9 items-center gap-2 rounded-lg px-3 text-xs font-medium ring-1 ring-inset transition-colors ${
+        className={`flex h-9 items-center gap-2 rounded-lg px-3 text-xs font-medium transition-colors ${
           running
-            ? 'text-emerald-300 ring-emerald-400/30 hover:bg-emerald-500/10'
-            : 'text-yellow-300 ring-yellow-400/30 hover:bg-yellow-500/10'
+            ? 'bg-status-normal/10 text-status-normal hover:bg-status-normal/20'
+            : 'bg-status-warning/10 text-status-warning hover:bg-status-warning/20'
         }`}
       >
         {running ? <Pause size={14} /> : <Play size={14} />}
-        <span className="hidden md:inline">{running ? 'Streaming' : 'Paused'}</span>
+        <span className="hidden md:inline">{running ? 'Berjalan' : 'Dijeda'}</span>
       </button>
 
       <button
         type="button"
         onClick={() => onNavigate('alerts')}
         className="relative rounded-lg p-2 text-slate-300 hover:bg-surface-raised"
-        aria-label="Buka Alert Center"
+        aria-label="Buka Pusat Peringatan"
       >
         <Bell size={19} />
         {unreadCount > 0 && (
-          <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-rose-500 px-1 font-mono text-[10px] font-semibold text-white">
+          <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-status-critical px-1 font-mono text-[10px] font-semibold text-canvas">
             {unreadCount > 99 ? '99+' : unreadCount}
           </span>
         )}
