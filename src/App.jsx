@@ -9,6 +9,7 @@ import AIAnalysis from './pages/AIAnalysis';
 import AlertCenter from './pages/AlertCenter';
 import History from './pages/History';
 import DeviceManagement from './pages/DeviceManagement';
+import Chatbot from './components/chatbot/Chatbot';
 
 const PAGES = {
   overview: Overview,
@@ -30,14 +31,22 @@ export default function App() {
   }, [route]);
 
   // Homepage tampil tanpa sidebar/topbar dashboard
-  if (route === HOME_PAGE) return <Home onNavigate={navigate} />;
+  if (route === HOME_PAGE) return (
+    <>
+      <Home onNavigate={navigate} />
+      <Chatbot />
+    </>
+  );
 
   const Page = PAGES[route];
   const meta = NAV_ITEMS.find((n) => n.id === route);
 
   return (
-    <AppLayout current={route} page={meta} onNavigate={navigate}>
-      <Page onNavigate={navigate} />
-    </AppLayout>
+    <>
+      <AppLayout current={route} page={meta} onNavigate={navigate}>
+        <Page onNavigate={navigate} />
+      </AppLayout>
+      <Chatbot />
+    </>
   );
 }
