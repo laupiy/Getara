@@ -1,6 +1,6 @@
-# VibeGuard Dashboard — Smart Machine Health Monitoring System
+# Getara Dashboard — Smart Machine Health Monitoring System
 
-Dashboard prototype untuk VibeGuard (React + Vite + Tailwind CSS v4 + Recharts + Lucide).
+Dashboard prototype untuk Getara (React + Vite + Tailwind CSS v4 + Recharts + Lucide).
 
 > **Semua data di dashboard ini adalah SIMULASI.** Hardware, MQTT, dataset asli, dan model AI belum terintegrasi.
 
@@ -9,7 +9,7 @@ Dashboard prototype untuk VibeGuard (React + Vite + Tailwind CSS v4 + Recharts +
 Butuh Node.js 20 atau lebih baru.
 
 ```bash
-cd vibeguard-dashboard
+cd Getara-dashboard
 npm install
 npm run dev
 ```

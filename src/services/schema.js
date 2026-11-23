@@ -5,7 +5,7 @@
 // =====================================================================
 
 /**
- * Paket telemetri getaran dari ESP32 (rencana payload MQTT topik `vibeguard/<deviceId>/vibration`).
+ * Paket telemetri getaran dari ESP32 (rencana payload MQTT topik `Getara/<deviceId>/vibration`).
  * @typedef {Object} TelemetryPacket
  * @property {string} deviceId      contoh "esp32-vg-01"
  * @property {number} seq           nomor urut paket, untuk mendeteksi paket hilang

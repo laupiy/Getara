@@ -34,7 +34,7 @@ export default function HeroVisual() {
 
   return (
     <div className="relative overflow-hidden rounded-2xl border border-line bg-surface/60 p-4 shadow-2xl shadow-black/30">
-      <svg viewBox="0 0 520 330" className="h-auto w-full" role="img" aria-label="Ilustrasi prototype VibeGuard: motor DC, sensor ADXL345, dan ESP32">
+      <svg viewBox="0 0 520 330" className="h-auto w-full" role="img" aria-label="Ilustrasi prototype Getara: motor DC, sensor ADXL345, dan ESP32">
         <defs>
           <pattern id="vg-grid" width="20" height="20" patternUnits="userSpaceOnUse">
             <path d="M20 0H0V20" fill="none" stroke={C.line} strokeOpacity="0.35" strokeWidth="0.6" />

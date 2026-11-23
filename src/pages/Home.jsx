@@ -27,7 +27,7 @@ export default function Home({ onNavigate }) {
               <Activity size={20} strokeWidth={2.5} />
             </span>
             <span className="leading-tight">
-              <span className="block text-base font-bold tracking-tight">VibeGuard</span>
+              <span className="block text-base font-bold tracking-tight">Getara</span>
               <span className="block text-[11px] text-muted">Smart Machine Health Monitoring</span>
             </span>
           </button>

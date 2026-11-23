@@ -81,7 +81,7 @@ export default function DeviceManagement() {
         <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-slate-400">
           Mode data saat ini: <Badge tone="cyan">{dataMode}</Badge>
           <span>Topik MQTT rencana:</span>
-          <code className="rounded bg-navy-850 px-1.5 py-0.5 text-cyan-300">vibeguard/esp32-vg-01/vibration</code>
+          <code className="rounded bg-navy-850 px-1.5 py-0.5 text-cyan-300">Getara/esp32-vg-01/vibration</code>
         </div>
       </Card>
 

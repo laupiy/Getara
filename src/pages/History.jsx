@@ -26,7 +26,7 @@ function downloadCsv(rows) {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = `vibeguard_history_SIMULASI_${toDateInput(Date.now())}.csv`;
+  a.download = `Getara_history_SIMULASI_${toDateInput(Date.now())}.csv`;
   a.click();
   URL.revokeObjectURL(url);
 }

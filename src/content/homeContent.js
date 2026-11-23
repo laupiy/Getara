@@ -10,7 +10,7 @@ export const HOME_NAV = [
 
 export const HERO = {
   eyebrow: 'Prototype IoT + AI · Data masih simulasi',
-  title: 'VibeGuard',
+  title: 'Getara',
   tagline: 'Smart Machine Health Monitoring System',
   description:
     'Sistem monitoring kondisi mesin melalui pola getaran. Sensor ADXL345 dan ESP32 membaca getaran motor, lalu data dianalisis untuk mendeteksi indikasi anomali sejak dini.',
@@ -22,10 +22,10 @@ export const HERO = {
 };
 
 export const ABOUT = {
-  eyebrow: 'About VibeGuard',
+  eyebrow: 'About Getara',
   title: 'Membaca kondisi mesin dari getarannya',
   description:
-    'Perubahan pola getaran sering menjadi tanda awal adanya masalah pada mesin. VibeGuard mengeksplorasi cara memantau pola tersebut secara otomatis, sehingga perubahan kondisi bisa dikenali lebih awal.',
+    'Perubahan pola getaran sering menjadi tanda awal adanya masalah pada mesin. Getara mengeksplorasi cara memantau pola tersebut secara otomatis, sehingga perubahan kondisi bisa dikenali lebih awal.',
   pillars: [
     {
       icon: AlertTriangle,
@@ -88,7 +88,7 @@ export const HOW_IT_WORKS = {
       id: 'mqtt',
       name: 'Wi-Fi / MQTT',
       role: 'Jalur komunikasi',
-      detail: 'Paket dipublikasikan ke topik vibeguard/esp32-vg-01/vibration melalui broker MQTT (rencana: Mosquitto).',
+      detail: 'Paket dipublikasikan ke topik Getara/esp32-vg-01/vibration melalui broker MQTT (rencana: Mosquitto).',
       status: 'Belum terintegrasi',
     },
     {
@@ -100,7 +100,7 @@ export const HOW_IT_WORKS = {
     },
     {
       id: 'dashboard',
-      name: 'Dashboard VibeGuard',
+      name: 'Dashboard Getara',
       role: 'Visualisasi & peringatan',
       detail: 'Menampilkan grafik getaran, status mesin, dan alert. Saat ini berjalan dengan data simulasi.',
       status: 'Berjalan (simulasi)',
@@ -111,7 +111,7 @@ export const TECHNOLOGY = {
   eyebrow: 'Technology',
   title: 'Tiga lapisan teknologi',
   description:
-    'VibeGuard menggabungkan perangkat IoT untuk membaca getaran, pemrosesan sinyal untuk mengubahnya menjadi fitur, dan AI untuk mengenali pola yang tidak biasa.',
+    'Getara menggabungkan perangkat IoT untuk membaca getaran, pemrosesan sinyal untuk mengubahnya menjadi fitur, dan AI untuk mengenali pola yang tidak biasa.',
   layers: [
     {
       icon: Radio,

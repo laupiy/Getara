@@ -30,7 +30,7 @@ export default function Sidebar({ current, onNavigate, open, onClose }) {
               <Activity size={20} strokeWidth={2.5} />
             </span>
             <div className="leading-tight">
-              <p className="text-base font-bold tracking-tight text-slate-50">VibeGuard</p>
+              <p className="text-base font-bold tracking-tight text-slate-50">Getara</p>
               <p className="text-[11px] text-slate-400">Machine Health Monitoring</p>
             </div>
           </button>
