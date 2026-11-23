@@ -1,4 +1,4 @@
-# Getara Dashboard — Smart Machine Health Monitoring System
+# Getara — Smart Machine Health Monitoring System
 
 Dashboard prototype untuk Getara (React + Vite + Tailwind CSS v4 + Recharts + Lucide).
 
