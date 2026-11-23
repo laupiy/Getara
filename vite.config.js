@@ -26,7 +26,7 @@ function aiProxyPlugin(env) {
             res.end(JSON.stringify({ error: 'Format pesan (messages) tidak valid.' }));
             return;
           }
-          const result = await processAIChat(payload.messages, env);
+          const result = await processAIChat(payload.messages, env, payload.machineContext);
           res.statusCode = 200;
           res.setHeader('Content-Type', 'application/json');
           res.end(JSON.stringify(result));
