@@ -57,7 +57,7 @@ export default function AlertCenter() {
       />
 
       <div className="mb-6 grid grid-cols-2 gap-4 xl:grid-cols-4">
-        <StatCard label="Total alert" value={alerts.length} icon={Bell} tone="cyan" />
+        <StatCard label="Total alert" value={alerts.length} icon={Bell} tone="accent" />
         <StatCard label="Belum dibaca" value={unreadCount} icon={BellOff} tone="violet" />
         <StatCard label="Status open" value={openCount} icon={AlertTriangle} tone="red" />
         <StatCard label="High / Critical" value={highCount} icon={AlertTriangle} tone="amber" />
@@ -70,7 +70,7 @@ export default function AlertCenter() {
         actions={<SimTag />}
         bodyClassName="p-0"
       >
-        <div className="flex flex-wrap items-end gap-3 border-b border-navy-700/60 px-5 py-4">
+        <div className="flex flex-wrap items-end gap-3 border-b border-line/60 px-5 py-4">
           <Select
             label="Severity"
             value={severity}
@@ -108,7 +108,7 @@ export default function AlertCenter() {
         <div className="overflow-x-auto">
           <table className="w-full min-w-[760px] text-sm">
             <thead>
-              <tr className="border-b border-navy-700 text-left text-xs uppercase tracking-wider text-slate-400">
+              <tr className="border-b border-line text-left text-xs uppercase tracking-wider text-slate-400">
                 <th className="w-6 px-5 py-3" />
                 <th className="px-3 py-3 font-medium">Waktu</th>
                 <th className="px-3 py-3 font-medium">Peringatan</th>
@@ -118,11 +118,11 @@ export default function AlertCenter() {
                 <th className="px-5 py-3 text-right font-medium">Aksi</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-navy-700/60">
+            <tbody className="divide-y divide-line/60">
               {filtered.map((a) => (
-                <tr key={a.id} className="cursor-pointer transition-colors hover:bg-navy-800/50" onClick={() => open(a)}>
+                <tr key={a.id} className="cursor-pointer transition-colors hover:bg-surface-raised/50" onClick={() => open(a)}>
                   <td className="px-5 py-3">
-                    {!a.read && <span className="block h-2 w-2 rounded-full bg-cyan-400" title="Belum dibaca" />}
+                    {!a.read && <span className="block h-2 w-2 rounded-full bg-accent" title="Belum dibaca" />}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3 font-mono text-xs text-slate-400">{formatDateTime(a.timestamp)}</td>
                   <td className={`px-3 py-3 ${a.read ? 'text-slate-300' : 'font-semibold text-slate-50'}`}>{a.title}</td>

@@ -62,7 +62,7 @@ export default function AlertDetailModal({ alertId, onClose }) {
           ['Sumber', alert.source],
         ]}
       />
-      <p className="mt-4 rounded-lg border border-dashed border-navy-600 bg-navy-850 p-3 text-xs text-slate-400">
+      <p className="mt-4 rounded-lg border border-dashed border-line bg-canvas p-3 text-xs text-slate-400">
         Alert ini dibuat oleh aturan heuristik pada data simulasi. Jenis anomali diambil dari skenario simulasi yang dipilih,
         bukan hasil klasifikasi model AI.
       </p>

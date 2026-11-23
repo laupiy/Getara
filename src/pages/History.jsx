@@ -74,7 +74,7 @@ function SessionDetail({ session, onClose }) {
           series={[{ key: 'rms', name: 'RMS', color: CHART_COLORS.total }]}
         />
       </div>
-      <p className="mt-4 rounded-lg border border-dashed border-navy-600 bg-navy-850 p-3 text-xs text-slate-400">{session.notes}</p>
+      <p className="mt-4 rounded-lg border border-dashed border-line bg-canvas p-3 text-xs text-slate-400">{session.notes}</p>
     </Modal>
   );
 }
@@ -164,7 +164,7 @@ export default function History() {
         </div>
         <div className="mt-3 flex flex-wrap gap-2 text-xs text-slate-400">
           {counts.map(([c, n]) => (
-            <span key={c} className="rounded-md bg-navy-850 px-2 py-1">
+            <span key={c} className="rounded-md bg-canvas px-2 py-1">
               {CONDITION[c].label}: <span className="font-mono text-slate-200">{n}</span>
             </span>
           ))}
@@ -175,7 +175,7 @@ export default function History() {
         <div className="overflow-x-auto">
           <table className="w-full min-w-[860px] text-sm">
             <thead>
-              <tr className="border-b border-navy-700 text-left text-xs uppercase tracking-wider text-slate-400">
+              <tr className="border-b border-line text-left text-xs uppercase tracking-wider text-slate-400">
                 <th className="px-5 py-3 font-medium">ID</th>
                 <th className="px-3 py-3 font-medium">Waktu mulai</th>
                 <th className="px-3 py-3 font-medium">Kondisi</th>
@@ -187,10 +187,10 @@ export default function History() {
                 <th className="px-5 py-3 text-right font-medium">Aksi</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-navy-700/60">
+            <tbody className="divide-y divide-line/60">
               {filtered.map((s) => (
-                <tr key={s.id} className="cursor-pointer hover:bg-navy-800/50" onClick={() => setSelected(s)}>
-                  <td className="px-5 py-3 font-mono text-xs text-cyan-300">{s.id}</td>
+                <tr key={s.id} className="cursor-pointer hover:bg-surface-raised/50" onClick={() => setSelected(s)}>
+                  <td className="px-5 py-3 font-mono text-xs text-accent">{s.id}</td>
                   <td className="whitespace-nowrap px-3 py-3 font-mono text-xs text-slate-400">{formatDateTime(s.startedAt)}</td>
                   <td className="px-3 py-3">
                     <StatusBadge map={CONDITION} value={s.condition} />

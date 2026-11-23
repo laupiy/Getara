@@ -27,7 +27,7 @@ export const CONDITION = {
 };
 
 export const CONNECTION = {
-  simulated: { label: 'Simulated', tone: 'cyan' },
+  simulated: { label: 'Simulated', tone: 'accent' },
   connected: { label: 'Connected', tone: 'green' },
   disconnected: { label: 'Not Connected', tone: 'slate' },
   disabled: { label: 'Disabled', tone: 'slate' },

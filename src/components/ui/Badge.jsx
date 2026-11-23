@@ -1,21 +1,24 @@
 const TONES = {
-  cyan: 'bg-cyan-500/10 text-cyan-300 ring-cyan-400/30',
-  blue: 'bg-blue-500/10 text-blue-300 ring-blue-400/30',
-  green: 'bg-emerald-500/10 text-emerald-300 ring-emerald-400/30',
-  amber: 'bg-amber-500/10 text-amber-300 ring-amber-400/30',
+  // 'accent' = warna utama tema; 'cyan' dipertahankan sebagai alias agar pemanggil lama tetap jalan
+  accent: 'bg-accent/10 text-accent ring-accent/30',
+  cyan: 'bg-accent/10 text-accent ring-accent/30',
+  blue: 'bg-sky-500/10 text-sky-300 ring-sky-400/30',
+  green: 'bg-status-normal/10 text-green-300 ring-status-normal/30',
+  amber: 'bg-status-warning/10 text-yellow-300 ring-status-warning/30',
   orange: 'bg-orange-500/10 text-orange-300 ring-orange-400/30',
-  red: 'bg-rose-500/10 text-rose-300 ring-rose-400/30',
+  red: 'bg-status-critical/10 text-red-300 ring-status-critical/30',
   violet: 'bg-violet-500/10 text-violet-300 ring-violet-400/30',
   slate: 'bg-slate-500/10 text-slate-300 ring-slate-400/25',
 };
 
 const DOTS = {
-  cyan: 'bg-cyan-400',
-  blue: 'bg-blue-400',
-  green: 'bg-emerald-400',
-  amber: 'bg-amber-400',
+  accent: 'bg-accent',
+  cyan: 'bg-accent',
+  blue: 'bg-sky-400',
+  green: 'bg-status-normal',
+  amber: 'bg-status-warning',
   orange: 'bg-orange-400',
-  red: 'bg-rose-400',
+  red: 'bg-status-critical',
   violet: 'bg-violet-400',
   slate: 'bg-slate-400',
 };
@@ -49,7 +52,7 @@ export function StatusBadge({ map, value, dot = true, pulse = false }) {
 /** Penanda data simulasi — dipakai di seluruh dashboard */
 export function SimTag({ label = 'SIMULASI' }) {
   return (
-    <span className="rounded border border-dashed border-cyan-400/40 px-1.5 py-px font-mono text-[10px] tracking-wider text-cyan-300/80">
+    <span className="rounded border border-dashed border-accent/40 px-1.5 py-px font-mono text-[10px] tracking-wider text-accent/80">
       {label}
     </span>
   );

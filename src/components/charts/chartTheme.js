@@ -1,13 +1,15 @@
+// Warna grafik tema Industrial Slate + Orange.
+// Orange untuk garis utama (RMS total); sumbu X/Y/Z memakai warna yang mudah dibedakan.
 export const CHART_COLORS = {
-  x: '#22d3ee', // cyan
+  x: '#38bdf8', // sky
   y: '#a78bfa', // violet
-  z: '#fbbf24', // amber
-  total: '#38bdf8', // sky
+  z: '#2dd4bf', // teal
+  total: '#f59e0b', // accent (garis utama)
   score: '#f472b6',
   temp: '#fb923c',
   baseline: '#94a3b8',
-  grid: '#1b2d55',
-  axis: '#64748b',
+  grid: '#2f3b48',
+  axis: '#94a3b8',
 };
 
 export const axisProps = {
@@ -19,13 +21,13 @@ export const axisProps = {
 
 export const tooltipProps = {
   contentStyle: {
-    background: '#0a1428',
-    border: '1px solid #233a68',
+    background: '#161c24',
+    border: '1px solid #374151',
     borderRadius: 8,
     fontSize: 12,
-    color: '#e2e8f0',
+    color: '#f8fafc',
   },
   labelStyle: { color: '#94a3b8' },
   itemStyle: { padding: 0 },
-  cursor: { stroke: '#233a68' },
+  cursor: { stroke: '#374151' },
 };

@@ -30,8 +30,8 @@ function DeviceCard({ device, connection, checking, result, onTest, extraAction 
       <p className="mt-3 text-xs text-slate-500">{device.notes}</p>
 
       {result && (
-        <div className="mt-3 rounded-lg border border-amber-400/30 bg-amber-500/5 p-3 text-xs text-amber-100/80">
-          <span className="font-mono text-amber-300">[{formatTime(result.checkedAt)}]</span> {result.message}
+        <div className="mt-3 rounded-lg border border-yellow-400/30 bg-yellow-500/5 p-3 text-xs text-yellow-100/80">
+          <span className="font-mono text-yellow-300">[{formatTime(result.checkedAt)}]</span> {result.message}
         </div>
       )}
 
@@ -73,15 +73,15 @@ export default function DeviceManagement() {
         <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
           {['ADXL345', 'I2C', 'ESP32', 'Wi-Fi', 'MQTT Broker', 'Python / API', 'Dashboard'].map((n, i, arr) => (
             <span key={n} className="flex items-center gap-2">
-              <span className="rounded-md border border-navy-600 bg-navy-850 px-2.5 py-1 text-slate-200">{n}</span>
-              {i < arr.length - 1 && <span className="text-cyan-400/60">→</span>}
+              <span className="rounded-md border border-line bg-canvas px-2.5 py-1 text-slate-200">{n}</span>
+              {i < arr.length - 1 && <span className="text-accent/60">→</span>}
             </span>
           ))}
         </div>
         <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-slate-400">
-          Mode data saat ini: <Badge tone="cyan">{dataMode}</Badge>
+          Mode data saat ini: <Badge tone="accent">{dataMode}</Badge>
           <span>Topik MQTT rencana:</span>
-          <code className="rounded bg-navy-850 px-1.5 py-0.5 text-cyan-300">Getara/esp32-vg-01/vibration</code>
+          <code className="rounded bg-canvas px-1.5 py-0.5 text-accent">Getara/esp32-vg-01/vibration</code>
         </div>
       </Card>
 

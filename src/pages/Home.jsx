@@ -4,6 +4,7 @@ import HeroSection from '../components/home/HeroSection';
 import AboutSection from '../components/home/AboutSection';
 import HowItWorksSection from '../components/home/HowItWorksSection';
 import TechnologySection from '../components/home/TechnologySection';
+import ExploreSection from '../components/home/ExploreSection';
 import { DASHBOARD_START } from '../config/navigation';
 import { HOME_NAV } from '../content/homeContent';
 
@@ -58,6 +59,7 @@ export default function Home({ onNavigate }) {
         <AboutSection />
         <HowItWorksSection />
         <TechnologySection onNavigate={onNavigate} />
+        <ExploreSection onNavigate={onNavigate} />
       </main>
     </div>
   );

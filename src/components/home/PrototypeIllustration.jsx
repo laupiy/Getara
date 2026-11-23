@@ -37,6 +37,20 @@ function Cylinder({ c, body = '#3b4756', cap = '#4b5868' }) {
   );
 }
 
+/** Isi tooltip / panel info komponen */
+function ComponentInfo({ comp }) {
+  return (
+    <>
+      <div className="flex flex-wrap items-center gap-2">
+        <p className="text-sm font-semibold text-ink">{comp.name}</p>
+        <span className="rounded border border-line px-1.5 py-px text-[10px] text-muted">{comp.status}</span>
+      </div>
+      <p className="text-xs text-accent">{comp.role}</p>
+      <p className="mt-1.5 text-xs leading-relaxed text-muted">{comp.detail}</p>
+    </>
+  );
+}
+
 // ---------- Geometri scene (dihitung sekali) ----------
 const G = {
   bench: box(0, 6, 0, 10, 5, 0.5),
@@ -123,7 +137,7 @@ export default function PrototypeIllustration({ active, onActive, components }) 
 
   return (
     <div className="relative" onMouseLeave={() => onActive(null)}>
-      <svg viewBox={`0 0 ${VB.w} ${VB.h}`} className="h-auto w-full select-none" aria-label="Ilustrasi alur kerja prototype Getara">
+      <svg viewBox={`0 0 ${VB.w} ${VB.h}`} className="h-auto w-full select-none" aria-label="Ilustrasi alur kerja prototype VibeGuard">
         <defs>
           <pattern id="hiw-grid" width="24" height="24" patternUnits="userSpaceOnUse">
             <path d="M24 0H0V24" fill="none" stroke={C.edge} strokeOpacity="0.3" strokeWidth="0.6" />
@@ -245,18 +259,25 @@ export default function PrototypeIllustration({ active, onActive, components }) 
       {/* Tooltip (desktop) */}
       {activeComp && tip && (
         <div
-          className="pointer-events-none absolute z-10 hidden w-60 rounded-lg border border-line bg-canvas/95 p-3 shadow-xl shadow-black/40 backdrop-blur md:block"
+          className="pointer-events-none absolute z-10 hidden w-64 rounded-lg border border-line bg-canvas/95 p-3 shadow-xl shadow-black/40 backdrop-blur md:block"
           style={{
             left: `${(tip[0] / VB.w) * 100}%`,
             top: `${(tip[1] / VB.h) * 100}%`,
             transform: `translate(${tipShift}, calc(-100% - 16px))`,
           }}
         >
-          <p className="text-sm font-semibold text-ink">{activeComp.name}</p>
-          <p className="text-xs text-accent">{activeComp.role}</p>
-          <p className="mt-1.5 text-xs leading-relaxed text-muted">{activeComp.detail}</p>
+          <ComponentInfo comp={activeComp} />
         </div>
       )}
+
+      {/* Panel info (mobile): tooltip melayang disembunyikan di layar kecil */}
+      <div className="mt-3 rounded-lg border border-line bg-canvas/80 p-3 md:hidden">
+        {activeComp ? (
+          <ComponentInfo comp={activeComp} />
+        ) : (
+          <p className="text-xs text-muted">Ketuk komponen atau nomor pada ilustrasi untuk melihat penjelasannya.</p>
+        )}
+      </div>
     </div>
   );
 }

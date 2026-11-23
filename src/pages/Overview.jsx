@@ -61,7 +61,7 @@ export default function Overview({ onNavigate }) {
           value={fmt(features?.rmsTotal, 3)}
           unit="g"
           icon={TrendingUp}
-          tone="cyan"
+          tone="accent"
           badge={<SimTag />}
           hint={`${fmt(ratio, 2)}× baseline`}
         />
@@ -109,7 +109,7 @@ export default function Overview({ onNavigate }) {
             status === 'anomaly'
               ? 'border-rose-400/30 bg-rose-500/5 text-rose-200'
               : status === 'warning'
-                ? 'border-amber-400/30 bg-amber-500/5 text-amber-200'
+                ? 'border-yellow-400/30 bg-yellow-500/5 text-yellow-200'
                 : 'border-emerald-400/20 bg-emerald-500/5 text-emerald-200'
           }`}>
             {STATUS_TEXT[status]}

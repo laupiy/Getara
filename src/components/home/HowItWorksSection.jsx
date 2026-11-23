@@ -20,42 +20,6 @@ export default function HowItWorksSection() {
           </span>
         </div>
       </div>
-
-      <ol className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" onMouseLeave={() => setActive(null)}>
-        {components.map((c, i) => {
-          const on = active === c.id;
-          return (
-            <li key={c.id}>
-              <button
-                type="button"
-                onMouseEnter={() => setActive(c.id)}
-                onFocus={() => setActive(c.id)}
-                onClick={() => setActive(on ? null : c.id)}
-                aria-pressed={on}
-                className={`flex h-full w-full gap-4 rounded-xl border p-4 text-left transition-colors ${
-                  on ? 'border-accent/60 bg-accent/5' : 'border-line bg-surface hover:border-accent/30'
-                }`}
-              >
-                <span
-                  className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border font-mono text-sm font-bold ${
-                    on ? 'border-accent bg-accent text-on-accent' : 'border-accent/60 text-accent'
-                  }`}
-                >
-                  {i + 1}
-                </span>
-                <span>
-                  <span className="flex flex-wrap items-center gap-2">
-                    <span className="font-semibold text-ink">{c.name}</span>
-                    <span className="rounded border border-line px-1.5 py-px text-[10px] text-muted">{c.status}</span>
-                  </span>
-                  <span className="mt-0.5 block text-xs text-accent">{c.role}</span>
-                  <span className="mt-2 block text-sm leading-relaxed text-muted">{c.detail}</span>
-                </span>
-              </button>
-            </li>
-          );
-        })}
-      </ol>
     </Section>
   );
 }

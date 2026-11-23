@@ -13,7 +13,7 @@ function PipelineNode({ title, desc, highlight = false }) {
   return (
     <div
       className={`min-w-[140px] flex-1 rounded-lg border px-3 py-2.5 ${
-        highlight ? 'border-cyan-400/40 bg-cyan-500/10' : 'border-navy-600 bg-navy-850'
+        highlight ? 'border-accent/40 bg-accent/10' : 'border-line bg-canvas'
       }`}
     >
       <p className="text-sm font-semibold text-slate-100">{title}</p>
@@ -25,8 +25,8 @@ function PipelineNode({ title, desc, highlight = false }) {
 function Arrow() {
   return (
     <>
-      <ChevronRight size={18} className="hidden shrink-0 text-cyan-400/60 lg:block" />
-      <ChevronDown size={18} className="mx-auto shrink-0 text-cyan-400/60 lg:hidden" />
+      <ChevronRight size={18} className="hidden shrink-0 text-accent/60 lg:block" />
+      <ChevronDown size={18} className="mx-auto shrink-0 text-accent/60 lg:hidden" />
     </>
   );
 }
@@ -43,8 +43,8 @@ function PipelineDiagram({ selected, onSelect }) {
           </div>
         ))}
       </div>
-      <div className="flex items-center gap-2 py-2 text-[11px] text-cyan-300/70">
-        <ChevronDown size={18} className="shrink-0 text-cyan-400/60" />
+      <div className="flex items-center gap-2 py-2 text-[11px] text-accent/70">
+        <ChevronDown size={18} className="shrink-0 text-accent/60" />
         fitur / sekuens yang sama dikirim ke ketiga model
       </div>
       {/* Baris 2: model → output */}
@@ -57,8 +57,8 @@ function PipelineDiagram({ selected, onSelect }) {
               onClick={() => onSelect(m.id)}
               className={`rounded-lg border px-3 py-2 text-left text-xs font-semibold transition-colors ${
                 selected === m.id
-                  ? 'border-cyan-400/60 bg-cyan-500/15 text-cyan-100'
-                  : 'border-navy-600 bg-navy-850 text-slate-300 hover:border-cyan-400/30'
+                  ? 'border-accent/60 bg-accent/15 text-ink'
+                  : 'border-line bg-canvas text-slate-300 hover:border-accent/30'
               }`}
             >
               {m.name}
@@ -104,7 +104,7 @@ function ModelDetail({ model }) {
         <ol className="space-y-2">
           {model.steps.map((s, i) => (
             <li key={s} className="flex gap-3 text-sm text-slate-300">
-              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-cyan-500/15 font-mono text-[11px] text-cyan-300">
+              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent/15 font-mono text-[11px] text-accent">
                 {i + 1}
               </span>
               {s}
@@ -124,11 +124,11 @@ function ModelDetail({ model }) {
             </ul>
           </div>
           <div>
-            <p className="mb-1.5 text-xs font-semibold text-amber-300">Risiko / keterbatasan</p>
+            <p className="mb-1.5 text-xs font-semibold text-yellow-300">Risiko / keterbatasan</p>
             <ul className="space-y-1">
               {model.risks.map((s) => (
                 <li key={s} className="flex gap-2 text-xs text-slate-400">
-                  <AlertTriangle size={13} className="mt-0.5 shrink-0 text-amber-400/70" />
+                  <AlertTriangle size={13} className="mt-0.5 shrink-0 text-yellow-400/70" />
                   {s}
                 </li>
               ))}
@@ -167,11 +167,11 @@ export default function AIAnalysis() {
         description="Rancangan perbandingan tiga pendekatan deteksi anomali. Belum ada model yang dilatih atau diuji."
       />
 
-      <div className="mb-6 flex items-start gap-3 rounded-xl border border-amber-400/30 bg-amber-500/5 p-4">
-        <AlertTriangle size={18} className="mt-0.5 shrink-0 text-amber-300" />
-        <div className="text-sm text-amber-100/90">
+      <div className="mb-6 flex items-start gap-3 rounded-xl border border-yellow-400/30 bg-yellow-500/5 p-4">
+        <AlertTriangle size={18} className="mt-0.5 shrink-0 text-yellow-300" />
+        <div className="text-sm text-yellow-100/90">
           <p className="font-semibold">Status: rancangan, belum ada hasil eksperimen.</p>
-          <p className="mt-1 text-amber-100/70">
+          <p className="mt-1 text-yellow-100/70">
             Semua metrik ditandai <span className="font-mono">Not Tested</span>. Angka akan muncul otomatis setelah hasil
             evaluasi asli tersedia melalui lapisan data (<span className="font-mono">fetchEvaluationResults</span>).
           </p>
@@ -203,7 +203,7 @@ export default function AIAnalysis() {
           <div className="overflow-x-auto">
             <table className="w-full min-w-[560px] text-sm">
               <thead>
-                <tr className="border-b border-navy-700 text-left text-xs uppercase tracking-wider text-slate-400">
+                <tr className="border-b border-line text-left text-xs uppercase tracking-wider text-slate-400">
                   <th className="px-5 py-3 font-medium">Aspek</th>
                   {AI_MODELS.map((m) => (
                     <th key={m.id} className="px-4 py-3 font-medium">
@@ -212,7 +212,7 @@ export default function AIAnalysis() {
                   ))}
                 </tr>
               </thead>
-              <tbody className="divide-y divide-navy-700/60">
+              <tbody className="divide-y divide-line/60">
                 {COMPARISON_ROWS.map(([aspect, ...vals]) => (
                   <tr key={aspect}>
                     <td className="px-5 py-2.5 text-slate-400">{aspect}</td>
@@ -232,7 +232,7 @@ export default function AIAnalysis() {
           <div className="overflow-x-auto">
             <table className="w-full min-w-[560px] text-sm">
               <thead>
-                <tr className="border-b border-navy-700 text-left text-xs uppercase tracking-wider text-slate-400">
+                <tr className="border-b border-line text-left text-xs uppercase tracking-wider text-slate-400">
                   <th className="px-5 py-3 font-medium">Metrik</th>
                   {AI_MODELS.map((m) => (
                     <th key={m.id} className="px-4 py-3 font-medium">
@@ -241,7 +241,7 @@ export default function AIAnalysis() {
                   ))}
                 </tr>
               </thead>
-              <tbody className="divide-y divide-navy-700/60">
+              <tbody className="divide-y divide-line/60">
                 {EVAL_METRICS.map((metric) => (
                   <tr key={metric.key}>
                     <td className="px-5 py-2.5">
@@ -264,8 +264,8 @@ export default function AIAnalysis() {
       <Card className="mt-6" title="Rencana Protokol Eksperimen" icon={ListChecks}>
         <ol className="grid grid-cols-1 gap-3 md:grid-cols-2">
           {EXPERIMENT_PROTOCOL.map((p, i) => (
-            <li key={p} className="flex gap-3 rounded-lg border border-navy-700 bg-navy-850 p-3 text-sm text-slate-300">
-              <span className="font-mono text-xs text-cyan-300">{String(i + 1).padStart(2, '0')}</span>
+            <li key={p} className="flex gap-3 rounded-lg border border-line bg-canvas p-3 text-sm text-slate-300">
+              <span className="font-mono text-xs text-accent">{String(i + 1).padStart(2, '0')}</span>
               {p}
             </li>
           ))}

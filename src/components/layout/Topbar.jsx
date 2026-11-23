@@ -13,11 +13,11 @@ export default function Topbar({ title, description, onMenu, onNavigate }) {
   }, []);
 
   return (
-    <header className="sticky top-0 z-20 flex h-16 items-center gap-3 border-b border-navy-700/70 bg-navy-950/80 px-4 backdrop-blur sm:px-6">
+    <header className="sticky top-0 z-20 flex h-16 items-center gap-3 border-b border-line/70 bg-canvas/85 px-4 backdrop-blur sm:px-6">
       <button
         type="button"
         onClick={onMenu}
-        className="rounded-lg p-2 text-slate-300 hover:bg-navy-800 lg:hidden"
+        className="rounded-lg p-2 text-slate-300 hover:bg-surface-raised lg:hidden"
         aria-label="Buka menu"
       >
         <Menu size={20} />
@@ -28,7 +28,7 @@ export default function Topbar({ title, description, onMenu, onNavigate }) {
         <p className="hidden truncate text-xs text-slate-500 sm:block">{description}</p>
       </div>
 
-      <Badge tone="cyan" dot pulse={running} className="hidden sm:inline-flex">
+      <Badge tone="accent" dot pulse={running} className="hidden sm:inline-flex">
         SIMULATION MODE
       </Badge>
 
@@ -39,7 +39,7 @@ export default function Topbar({ title, description, onMenu, onNavigate }) {
         className={`flex h-9 items-center gap-2 rounded-lg px-3 text-xs font-medium ring-1 ring-inset transition-colors ${
           running
             ? 'text-emerald-300 ring-emerald-400/30 hover:bg-emerald-500/10'
-            : 'text-amber-300 ring-amber-400/30 hover:bg-amber-500/10'
+            : 'text-yellow-300 ring-yellow-400/30 hover:bg-yellow-500/10'
         }`}
       >
         {running ? <Pause size={14} /> : <Play size={14} />}
@@ -49,7 +49,7 @@ export default function Topbar({ title, description, onMenu, onNavigate }) {
       <button
         type="button"
         onClick={() => onNavigate('alerts')}
-        className="relative rounded-lg p-2 text-slate-300 hover:bg-navy-800"
+        className="relative rounded-lg p-2 text-slate-300 hover:bg-surface-raised"
         aria-label="Buka Alert Center"
       >
         <Bell size={19} />

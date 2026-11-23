@@ -6,6 +6,7 @@ export const HOME_NAV = [
   { id: 'about', label: 'About' },
   { id: 'how-it-works', label: 'How It Works' },
   { id: 'technology', label: 'Technology' },
+  { id: 'explore', label: 'Explore' },
 ];
 
 export const HERO = {
@@ -56,6 +57,7 @@ export const ABOUT = {
     { icon: Cpu, label: 'Status', text: 'Prototype awal. Hardware, dataset asli, dan model AI belum terintegrasi.' },
   ],
 };
+
 // Komponen pada ilustrasi How It Works. `status` dibuat jujur sesuai kondisi project saat ini.
 export const HOW_IT_WORKS = {
   eyebrow: 'How It Works',
@@ -107,6 +109,7 @@ export const HOW_IT_WORKS = {
     },
   ],
 };
+
 export const TECHNOLOGY = {
   eyebrow: 'Technology',
   title: 'Tiga lapisan teknologi',
@@ -146,5 +149,12 @@ export const TECHNOLOGY = {
   ],
   aiTitle: 'Pendekatan AI yang akan dibandingkan',
   aiNote: 'Ketiganya masih tahap rancangan. Belum ada hasil eksperimen, sehingga belum ada klaim model mana yang lebih baik.',
-  stack:
+};
+
+export const EXPLORE = {
+  eyebrow: 'Explore Prototype',
+  title: 'Coba dashboard monitoring',
+  description:
+    'Dashboard sudah bisa dicoba dengan data simulasi: ubah skenario motor, amati grafik getaran, dan lihat bagaimana alert muncul.',
+  note: 'Preview ini memakai data simulasi yang sama dengan dashboard. Klik untuk membuka Overview.',
 };

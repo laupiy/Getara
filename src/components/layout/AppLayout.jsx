@@ -11,8 +11,8 @@ export default function AppLayout({ current, page, onNavigate, children }) {
       <Sidebar current={current} onNavigate={onNavigate} open={menuOpen} onClose={() => setMenuOpen(false)} />
       <div className="lg:pl-64">
         <Topbar title={page.label} description={page.desc} onMenu={() => setMenuOpen(true)} onNavigate={onNavigate} />
-        <div className="border-b border-cyan-400/10 bg-cyan-500/5 px-4 py-2 sm:px-6">
-          <p className="flex items-center gap-2 text-xs text-cyan-200/80">
+        <div className="border-b border-accent/10 bg-accent/5 px-4 py-2 sm:px-6">
+          <p className="flex items-center gap-2 text-xs text-accent/90">
             <Info size={14} className="shrink-0" />
             Semua data di dashboard ini adalah data simulasi untuk demonstrasi konsep. Bukan hasil sensor atau model AI sungguhan.
           </p>

@@ -40,7 +40,7 @@ export default function TimeSeriesChart({
   return (
     <div style={{ height }} className="w-full">
       {data.length === 0 ? (
-        <div className="flex h-full items-center justify-center rounded-lg border border-dashed border-navy-700 text-sm text-slate-500">
+        <div className="flex h-full items-center justify-center rounded-lg border border-dashed border-line text-sm text-slate-500">
           Menunggu data simulasi…
         </div>
       ) : (

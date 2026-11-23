@@ -1,5 +1,5 @@
 export const fieldClass =
-  'h-9 rounded-lg border border-navy-600 bg-navy-850 px-3 text-sm text-slate-100 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400';
+  'h-9 rounded-lg border border-line bg-canvas px-3 text-sm text-slate-100 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent';
 
 export default function Select({ label, value, onChange, options, className = '' }) {
   return (

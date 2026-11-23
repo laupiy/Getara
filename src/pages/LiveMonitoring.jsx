@@ -17,8 +17,8 @@ export default function LiveMonitoring() {
   const { xyz, trend, features, packet, score, status, packetsReceived } = telemetry;
 
   const connections = [
-    { name: 'ESP32 (esp32-vg-01)', icon: Cpu, state: running ? 'Simulated' : 'Paused', tone: running ? 'cyan' : 'amber' },
-    { name: 'ADXL345 via I2C', icon: Activity, state: running ? 'Simulated' : 'Paused', tone: running ? 'cyan' : 'amber' },
+    { name: 'ESP32 (esp32-vg-01)', icon: Cpu, state: running ? 'Simulated' : 'Paused', tone: running ? 'accent' : 'amber' },
+    { name: 'ADXL345 via I2C', icon: Activity, state: running ? 'Simulated' : 'Paused', tone: running ? 'accent' : 'amber' },
     { name: 'MQTT Broker', icon: Radio, state: 'Not Integrated', tone: 'slate' },
     { name: 'Wi-Fi', icon: WifiOff, state: 'Not Integrated', tone: 'slate' },
   ];
@@ -114,7 +114,7 @@ export default function LiveMonitoring() {
                     <c.icon size={15} className="text-slate-500" />
                     {c.name}
                   </span>
-                  <Badge tone={c.tone} dot pulse={c.tone === 'cyan'}>
+                  <Badge tone={c.tone} dot pulse={c.tone === 'accent'}>
                     {c.state}
                   </Badge>
                 </li>
